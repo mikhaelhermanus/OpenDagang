@@ -6,9 +6,10 @@ import { IconSeeAll, ProductWishlist } from '../Themes/Svg'
 // styles
 import styles from './Styles/TopProductStyle'
 import { apply } from '../Themes/OsmiCSX'
-
+import NavigationServices from '../Services/NavigationServices'
 const topProduct = props => {
   const { data } = props
+
 
   return (
     <View style={styles.container}>
@@ -16,32 +17,35 @@ const topProduct = props => {
         <Text style={styles.headerTitle}>Top Product</Text>
 
         <View style={apply('row items-center')}>
-          <Text style={styles.headerMore}>See All</Text>
+          <TouchableOpacity onPress={() =>
+            NavigationServices.navigate('TopProductAll')}>
+            <Text style={styles.headerMore}>See All</Text>
+          </TouchableOpacity>
           <IconSeeAll width={24} height={24} />
         </View>
       </View>
 
       <ScrollView
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}>
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}>
         {data && data.map((item, index) =>
-        <TouchableOpacity
-        key={index}
-        activeOpacity={0.9}
-        style={[
-          styles.productWrapper,
-          index === 0 && apply('ml-5'),
-          index === data.length - 1 && apply('mr-5')
-        ]}>
-          <ImageBackground source={item.thumb} style={styles.productThumb}>
-            <View style={styles.productWishlist}>
-              <ProductWishlist width={14} height={14} />
-            </View>
-          </ImageBackground>
+          <TouchableOpacity
+            key={index}
+            activeOpacity={0.9}
+            style={[
+              styles.productWrapper,
+              index === 0 && apply('ml-5'),
+              index === data.length - 1 && apply('mr-5')
+            ]}>
+            <ImageBackground source={item.thumb} style={styles.productThumb}>
+              <View style={styles.productWishlist}>
+                <ProductWishlist width={14} height={14} />
+              </View>
+            </ImageBackground>
 
-          <Text style={styles.productName}>{item.name}</Text>
-          <Text style={styles.productPrice}>{item.price}</Text>
-        </TouchableOpacity>)}
+            <Text style={styles.productName}>{item.name}</Text>
+            <Text style={styles.productPrice}>{item.price}</Text>
+          </TouchableOpacity>)}
       </ScrollView>
     </View>
   )

@@ -13,7 +13,7 @@ class NotifScreen extends Component {
   //   this.state = {}
   // }
 
-  render () {
+  render() {
     return (
       <ScrollView style={styles.container}>
         <Text>NotifScreen Container</Text>

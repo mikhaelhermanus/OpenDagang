@@ -17,6 +17,9 @@ import NotifScreen from '../Containers/NotifScreen'
 // Profile
 import ProfileScreen from '../Containers/ProfileScreen'
 
+// Product
+import TopProductAll from '../Containers/Product/TopProductAll.screen';
+
 // Manifest of possible screens
 const AppStack = createStackNavigator({
   MainScreen: {
@@ -37,7 +40,11 @@ const AppStack = createStackNavigator({
   Notif: { screen: NotifScreen },
 
   // Profile
-  Profile: { screen: ProfileScreen }
+  Profile: { screen: ProfileScreen },
+
+  //product
+  TopProductAll: { screen: TopProductAll },
+
 }, {
   // Default config for all screens
   headerMode: 'none',
